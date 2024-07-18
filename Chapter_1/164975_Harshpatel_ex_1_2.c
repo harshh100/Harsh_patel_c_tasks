@@ -19,15 +19,14 @@ int main()
 
 {
 
-    /** printing hello world */
-    printf("Hello \n world");
+    /** \b is backspace */
+    printf("Hello\b world");
 
     return 0;
 
 } 
 
 /* OUTPUT 
-*Hello
-* world
+*Hell world
 */
 
