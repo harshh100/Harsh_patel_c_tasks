@@ -1,0 +1,17 @@
+/*
+*heading 
+
+*Author : Harsh Patel (164975)
+
+*Created:17/7/24
+
+*/
+ 
+/** required header files */
+#include <stdio.h>
+
+/** main function */
+int main()
+{
+  return 0;
+}
