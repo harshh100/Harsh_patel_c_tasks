@@ -14,7 +14,7 @@
 int main()
 {
   int iInput;		 // input store
-  int iLastInput = '\0'; // last input store
+  int iLastInput = 0 ; // last input store
 
   while ((iInput = getchar()) != EOF) // input until end of file
   {
