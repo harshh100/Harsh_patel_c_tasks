@@ -14,13 +14,15 @@
 int main()
 {
   int iInput;		 // input store
-  int iLastInput = 0 ; // last input store
+  int iLastInput = '\0' ; // last input store
 
   while ((iInput = getchar()) != EOF) // input until end of file
   {
-    if (iInput != ' ' || iLastInput != ' ')  //check for single blank
+    if ( ( iInput != ' ' && iInput != '\t' ))  //check for single blank
     {
-      putchar(iInput);
+        putchar(iInput);
+    }else if(iLastInput != ' ' && iLastInput != '\t'){
+    	putchar(' ');
     }
 
     iLastInput = iInput; // update last input
