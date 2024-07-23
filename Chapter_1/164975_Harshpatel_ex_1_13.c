@@ -1,6 +1,5 @@
 /*
-*Write a program to print a histogram of the lengths of words in its input. It is 
-easy to draw the histogram with the bars horizontal; a vertical orientation is more challenging. 
+*Write a program to print a histogram of the lengths of words in its input. It is easy to draw the histogram with the bars horizontal; a vertical orientation is more challenging.   
 
 *Author : Harsh Patel (164975)
 
@@ -14,17 +13,19 @@ easy to draw the histogram with the bars horizontal; a vertical orientation is m
 /** main function */
 int main()
 {
+  int iInput;		 // input store
+  int iLastInput = '\0' ; // last input store
 
-  int iInput;
-  int iLastInput = '\0';
-  
-  while((iInput=getchar()) != EOF){
-  	if(iInput != ' ' && iInput != '\t' && iInput != '\n'){
-  		putchar('*');
-  	}else if (iLastInput != ' ' && iLastInput != '\t' && iLastInput != '\n' && iLastInput != '\0'){ 
-  		putchar('\n');
-  	}
+  while ((iInput = getchar()) != EOF) // input until end of file
+  {
+    if ( ( iInput != ' ' && iInput != '\t' ))  //check for single blank
+    {
+        putchar('*');
+    }else if(iLastInput != ' ' && iLastInput != '\t'){
+    	putchar('\n');
+    }
+
+    iLastInput = iInput; // update last input
   }
-  
   return 0;
 }
