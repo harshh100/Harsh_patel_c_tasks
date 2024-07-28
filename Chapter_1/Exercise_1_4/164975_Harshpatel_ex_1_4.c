@@ -26,9 +26,9 @@ int main()
 	do{
 	
 	  /* inputs */
-	  printf("Enter Lower Value : "); /* start value of table */
+	  printf("Enter Lower Celsius Value : "); /* start value of table */
 	  scanf("%d",&iLower);
-	  printf("Enter Upper Value : "); /* end value of thable */
+	  printf("Enter Upper Celsius Value : "); /* end value of thable */
 	  scanf("%d",&iUpper);
 	  printf("Enter Step Value : ");  /* incrementing values */
   	  scanf("%d",&iStep);
