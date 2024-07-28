@@ -9,24 +9,21 @@
 */
  
  
-/** required header files */
+/* required header files */
 
 #include <stdio.h>
  
-/** main function */
+/* main function */
 
 int main()
 
 {
 
-    /** \b is backspace */
-    printf("Hello\b world");
+    /* try to print '\z' */
+    printf("Hello \z world");
 
     return 0;
 
 } 
 
-/* OUTPUT 
-*Hell world
-*/
 
