@@ -21,7 +21,7 @@ The program takes three inputs from the user:
 2. Upper limit of the Fahrenheit values (must be an integer).
 3. Step size for the Fahrenheit values (must be an integer).
 
-Using these inputs, it generates a table converting the specified range of Celsius values to Fahrenheit. After displaying the table, the user is prompted to decide if they want to generate another table or exit the program.
+Using these inputs, it generates a table converting the specified range of Fahrenheit values to Celsius. After displaying the table, the user is prompted to decide if they want to generate another table or exit the program.
 
 ## Features
 - Dynamic user input for the range and step size.
@@ -29,8 +29,8 @@ Using these inputs, it generates a table converting the specified range of Celsi
 - Displays the table in a formatted manner.
 
 ## Usage
-1. Compile the program using a C compiler, e.g., `gcc -o ex_1_4 Exercise_1_4.c`.
-2. Run the compiled program, e.g., `./ex_1_4`.
+1. Compile the program using a C compiler, e.g., `gcc -o ex_1_3 Exercise_1_3.c`.
+2. Run the compiled program, e.g., `./ex_1_3`.
 3. Follow the prompts to enter the lower limit, upper limit, and step size.
 4. View the generated table.
 5. Choose whether to generate another table or exit.
@@ -38,7 +38,7 @@ Using these inputs, it generates a table converting the specified range of Celsi
 ## Run the Program using MAKEFILE
 1. Go to ROOT directory (cd CProgramming)
 2. Run the below command.
-3. `make run_exercise EXERCISE="Chapter1/Exercise_1.4/Exercise_1_4.c`
+3. `make run_exercise EXERCISE="Chapter1/Exercise_1.3/Exercise_1_3.c`
 
 ## Example
 
