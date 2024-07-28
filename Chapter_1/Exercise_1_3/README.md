@@ -38,7 +38,7 @@ Using these inputs, it generates a table converting the specified range of Celsi
 ## Run the Program using MAKEFILE
 1. Go to ROOT directory (cd CProgramming)
 2. Run the below command.
-3. make run_exercise EXERCISE="Chapter1/Exercise_1.4/Exercise_1_4.c"
+3. `make run_exercise EXERCISE="Chapter1/Exercise_1.4/Exercise_1_4.c`
 
 ## Example
 
