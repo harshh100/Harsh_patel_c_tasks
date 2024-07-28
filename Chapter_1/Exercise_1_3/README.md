@@ -29,8 +29,8 @@ Using these inputs, it generates a table converting the specified range of Celsi
 - Displays the table in a formatted manner.
 
 ## Usage
-1. Compile the program using a C compiler, e.g., `gcc -o Exercise_1_4 Exercise_1_4.c`.
-2. Run the compiled program, e.g., `./Exercise_1_4`.
+1. Compile the program using a C compiler, e.g., `gcc -o ex_1_4 Exercise_1_4.c`.
+2. Run the compiled program, e.g., `./ex_1_4`.
 3. Follow the prompts to enter the lower limit, upper limit, and step size.
 4. View the generated table.
 5. Choose whether to generate another table or exit.
