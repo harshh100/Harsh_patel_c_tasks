@@ -42,16 +42,16 @@ Using these inputs, it generates a table converting the specified range of Celsi
 
 ## Example
 
-```
-Enter Lower Fahrenheit Value : 100
-Enter Upper Fahrenheit Value : 200
-Enter Step Value : 20
-Fahr            Celsius
------------------------
-100               37.8
-120               48.9
-140               60.0
-160               71.1
-180               82.2
-200               93.3
-Do you want to Run Again [1 for YES / 0 for NO] : 0```
+	Enter Lower Fahrenheit Value : 100
+	Enter Upper Fahrenheit Value : 200
+	Enter Step Value : 20
+	Fahr            Celsius
+	-----------------------
+	100               37.8
+	120               48.9
+	140               60.0
+	160               71.1
+	180               82.2
+	200               93.3
+	Do you want to Run Again [1 for YES / 0 for NO] : 0
+
