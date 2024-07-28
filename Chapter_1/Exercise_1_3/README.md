@@ -41,7 +41,8 @@ Using these inputs, it generates a table converting the specified range of Celsi
 3. make run_exercise EXERCISE="Chapter1/Exercise_1.4/Exercise_1_4.c"
 
 ## Example
-Enter Lower Fahrenheit Value : 100
+
+`Enter Lower Fahrenheit Value : 100
 Enter Upper Fahrenheit Value : 200
 Enter Step Value : 20
 Fahr            Celsius
@@ -52,4 +53,4 @@ Fahr            Celsius
 160               71.1
 180               82.2
 200               93.3
-Do you want to Run Again [1 for YES / 0 for NO] : 0
+Do you want to Run Again [1 for YES / 0 for NO] : 0`
