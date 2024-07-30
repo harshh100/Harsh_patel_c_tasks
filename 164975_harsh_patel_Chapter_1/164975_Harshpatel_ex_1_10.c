@@ -53,6 +53,7 @@ int main()
   
 	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
 	  scanf("%d",&iRunAgain);
+	  getchar();
   
   }while(iRunAgain);
   

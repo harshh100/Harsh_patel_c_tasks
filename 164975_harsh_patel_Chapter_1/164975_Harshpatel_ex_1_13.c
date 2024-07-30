@@ -9,23 +9,47 @@
  
 /** required header files */
 #include <stdio.h>
-
+#define INPUT_SIZE 50
 /** main function */
 int main()
-{
-  int iInput;		 // input store
-  int iLastInput = '\0' ; // last input store
+{ 
 
-  while ((iInput = getchar()) != EOF) // input until end of file
-  {
-    if ( ( iInput != ' ' && iInput != '\t' ))  //check for single blank
-    {
-        putchar('*');
-    }else if(iLastInput != ' ' && iLastInput != '\t'){
-    	putchar('\n');
-    }
-
-    iLastInput = iInput; // update last input
-  }
+int iRunAgain=0;                  /* for code run again or not */
+   do{
+	  int iLastInput = '\0';			 /* last input */
+	  char cInput[INPUT_SIZE];          /* input array */
+	  int iFirstTime = 1;		      /* for checking single \t or \n or ' ' */
+	  
+	  
+	  printf("Enter String : ");
+	  fgets(cInput,INPUT_SIZE,stdin);	 /* input */
+	  
+  	  int iCounter=0;			 /* counter */
+	  while(cInput[iCounter] != '\0'){
+	  	
+	  	while(cInput[iCounter] != '\n' && cInput[iCounter] != '\t' && cInput[iCounter] != ' '){  /* print latters */	
+	  		putchar('*');
+	  		iFirstTime=1;
+	  		iCounter++;
+	  	};
+	  	
+	  	if(iFirstTime){           /* check for word break */
+	  		putchar('\n');
+	  		iFirstTime=0;
+	  		iCounter++;
+	  	}else{
+	  		iCounter++;		 /* skip the multiple \t or \n or ' ' */
+	  	}
+	
+	  };
+	  
+	  printf("\n");
+	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
+	  scanf("%d",&iRunAgain);
+	  //fflush(stdin);
+	  getchar();
+  
+  }while(iRunAgain);
+  
   return 0;
 }
