@@ -1,5 +1,5 @@
 /*
-*Revise the main routine of the longest-line program so it will correctly print the length of arbitrary long input lines, and as much as possible of the text. 
+*Write a program to print all input lines that are longer than 80 characters
 
 *Author : Harsh Patel (164975)
 
@@ -12,6 +12,7 @@
 /* Required Libraries */
 #include <stdio.h> 
 #define MAXLINE 1000 /* maximum input line length */ 
+#define MINSIZE 8 /* minimum character */
 /* int getline(char line[], int maxline); 
 void copy(char to[], char from[]); */
 /* print the longest input line */ 
@@ -30,33 +31,20 @@ int get_line(char cStr[],int iLimit) /* getline function */
 	 cStr[iCounter] = '\0'; /* store '\0' at the end of string */
 	 return iCounter; 
 }
-
-/* copy: copy 'from' into 'to'; assume to is big enough */ 
-void copy(char cTo[], char cFrom[]) 
-{ 
-	 int iCounter =0; 
-	 while ((cTo[iCounter] = cFrom[iCounter]) != '\0') 
-	 	++iCounter;
-}
  
 int main() 
 { 
-	 int iLen; /* current line length */ 
-	 int iMax =0; /* maximum length seen so far */ 
+	 int iLen; /* current line length */  
 	 char cLine[MAXLINE]; /* current input line */ 
-	 char cLongest[MAXLINE]; /* longest line saved here */ 
 	
 	printf("Enter Input : ");
 	 while ((iLen = get_line(cLine, MAXLINE)) > 0) 
 	 {
-		 if (iLen > iMax) /* compare size of current line with max line */
+		 if (iLen > MINSIZE) /* compare size of current line with minimun character */
 		 { 
-			 iMax = iLen; 
-			 copy(cLongest, cLine); 
+			printf("Line longer than %d characters: %s",MINSIZE,cLine);
 		 } 
-	}
-	 if (iMax > 0) /* there was a line */ 
-	 	printf("\nLongest line is %s with length %d", cLongest,iMax); 
+	} 
 	 return 0; 
 }
 
