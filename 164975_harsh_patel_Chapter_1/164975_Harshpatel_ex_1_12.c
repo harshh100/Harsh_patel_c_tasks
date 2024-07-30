@@ -49,6 +49,7 @@ int iRunAgain=0;                  /* for code run again or not */
 	  printf("\n");
 	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
 	  scanf("%d",&iRunAgain);
+	  //fflush(stdin);
 	  getchar();
   
   }while(iRunAgain);
