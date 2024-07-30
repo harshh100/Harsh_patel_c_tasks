@@ -68,23 +68,35 @@ in its input.
 int main()
 {
 	
-	int iInput;  						//input
-	int iCharaterFrequencies[94] = {0};	//character frequencies store
+	int iInput;  						/* input*/
+	int iCharaterFrequencies[128] = {0};	/* character frequencies store*/
 	
-	while((iInput = getchar()) != EOF){ 	//input loop
-		if(iInput - '!'>-1){
-			iCharaterFrequencies[iInput - '!']++;
+	printf("Enter String : ");
+	
+	while((iInput = getchar()) != EOF){ 	/* input loop */
+		if(iInput>-1){
+			iCharaterFrequencies[iInput]++;
 		}
 	}
 	
-	int iCharLength = sizeof(iCharaterFrequencies) / sizeof(iCharaterFrequencies[0]); // length of charater array
+	int iCharLength = sizeof(iCharaterFrequencies) / sizeof(iCharaterFrequencies[0]); /* length of charater array */
 	
+	printf("\n");
 	
-	for(int iI=0;iI< iCharLength ;iI++){	// print character's histogram
-		if(iCharaterFrequencies[iI]>0){		
-			printf("%c : ",('!'+iI));	// character print
+	for(int iI=0;iI< iCharLength ;iI++){		/* print character's histogram */
 		
-		while(iCharaterFrequencies[iI]>0 ){	// character's histogram print
+		if(iCharaterFrequencies[iI]>0){
+		
+		if(iI==9)		
+			printf("\\t: ");				/* \t print */
+		else if(iI==10)
+			printf("\\n: ");				/* \n print */
+		else if(iI==32)
+			printf("\\s: ");				/* \s print */
+		else
+			printf("%c : ",(iI)); 			/* other character print */
+			
+		while(iCharaterFrequencies[iI]>0 ){	/* character's histogram print */
 			putchar('*');
 			iCharaterFrequencies[iI]--;
 		}

@@ -29,32 +29,33 @@ int main()
   int iRunAgain=0;      /* for code run again or not */
 
 	
-	do{
+// 	do{
 	
 	  /* inputs */
 	  printf("Enter Lower Celsius Value : "); /* start value of table */
 	  scanf("%d",&iLower);
-	  printf("Enter Upper Celsius Value : "); /* end value of thable */
-	  scanf("%d",&iUpper);
-	  printf("Enter Step Value : ");  /* incrementing values */
-  	  scanf("%d",&iStep);
+	  printf("iLower : %d",iLower);
+// 	  printf("Enter Upper Celsius Value : "); /* end value of thable */
+// 	  scanf("%d",&iUpper);
+// 	  printf("Enter Step Value : ");  /* incrementing values */
+//   	  scanf("%d",&iStep);
 		
-	  printf("Celsius\t\tFahr\n");
-	  printf("-----------------------\n");
+// 	  printf("Celsius\t\tFahr\n");
+// 	  printf("-----------------------\n");
 
-	  fCelsius = iLower;		    /* Fahrenheit initialisation */
+// 	  fCelsius = iLower;		    /* Fahrenheit initialisation */
 	  
-	  while (fCelsius <= iUpper)
-	  {
-	    fFahr = FahrenheitToCelsius(fCelsius);      /* celsius to Fahrenheit convertion */
-	    printf("%3.0f\t\t%6.1f\n", fCelsius, fFahr);
-	    fCelsius = fCelsius + iStep;
-	  }
+// 	  while (fCelsius <= iUpper)
+// 	  {
+// 	    fFahr = FahrenheitToCelsius(fCelsius);      /* celsius to Fahrenheit convertion */
+// 	    printf("%3.0f\t\t%6.1f\n", fCelsius, fFahr);
+// 	    fCelsius = fCelsius + iStep;
+// 	  }
 	  
-	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
-       scanf("%d",&iRunAgain);
+// 	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
+//       scanf("%d",&iRunAgain);
 		
-	}while(iRunAgain);	
+// 	}while(iRunAgain);	
 	
   return 0;
 }

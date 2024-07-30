@@ -9,33 +9,52 @@
 
 */
  
-/** required header files */
+/* required header files */
 #include <stdio.h>
+#define INPUT_SIZE 50
 
-/** main function */
+/* main function */
 int main()
 {
-  int iInput; // input variable
-  while((iInput=getchar())!= EOF){
-    if (iInput == '\t')
-    {
-      putchar('\\');    // print '\'
-      putchar('t');     // print 't'
-    }
-    else if (iInput == '\b')
-    {
-      putchar('\\');    // print '\'
-      putchar('b');     // print 'b'
-    }
-    else if (iInput == '\\')
-    {
-      putchar('\\');    // print '\'
-      putchar('\\');    // print '\'
-    }
-    else
-    {
-      putchar(iInput);  // print input
-    }
-  }
+  int iRunAgain=0;      		    /* for code run again or not */
+  char cInput[INPUT_SIZE]; 	    /* input array */
+  
+  do{
+  		
+  	  printf("Enter String : ");
+  	  fgets(cInput,INPUT_SIZE,stdin);
+
+	  for(int iCounter=0;cInput[iCounter] != '\0';iCounter++){
+	    
+	    if (cInput[iCounter] == '\t')
+	    {
+		 putchar('\\');    /* print '\' */
+		 putchar('t');     /* print 't' */
+	    }
+	    else if (cInput[iCounter] == '\b')
+	    {
+		 putchar('\\');    /* print '\' */
+		 putchar('b');     /* print 'b' */
+	    }
+	    else if (cInput[iCounter] == '\\')
+	    {
+		 putchar('\\');    /* print '\' */
+		 putchar('\\');    /* print '\' */
+	    }else if(cInput[iCounter]=='\n'){
+	    	 cInput[iCounter];
+	    }
+	    else
+	    {
+		 putchar(cInput[iCounter]);  /* print input */
+	    }
+	  }
+	  
+	  printf("\n");
+  
+	  printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
+	  scanf("%d",&iRunAgain);
+  
+  }while(iRunAgain);
+  
   return 0;
 }

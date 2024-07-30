@@ -11,7 +11,7 @@
 /** required header files */
 
 /** missing header file leads to provide declaration of printf */
-//#include<stdio.h>
+#include<stdio.h>
 
  
 /** main function prints hello world */

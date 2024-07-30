@@ -5,6 +5,8 @@
 
 *Created:22/7/24
 
+*Modified : 29/7/24
+
 */
  
 /** required header files */
@@ -21,14 +23,14 @@ int main()
   nl = nw = nc = 0;
 
     while ((c = getchar()) != EOF) { 
-    ++nc; 
+    	++nc; 
         if (c == '\n') 
-        ++nl; 
+        	++nl; 
         if (c == ' ' || c == '\n' || c == '\t') 
-        state = OUT; 
+        	state = OUT; 
         else if (state == OUT) { 
-        state = IN; 
-        ++nw; 
+        	state = IN; 
+        	++nw; 
         } 
     } 
   printf("\nlines : %d, words : %d, character : %d\n", nl, nw, nc);
@@ -36,7 +38,7 @@ int main()
 }
 
 /*--test case--
-* 1. add more than one blank between two words
+*  1. add more than one blank between two words
 *  2. add more than one newline between two words
 *  3. add more than one tabs between two words
 *  4. do not write anything
