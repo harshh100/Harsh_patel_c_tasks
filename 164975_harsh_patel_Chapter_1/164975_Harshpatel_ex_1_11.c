@@ -21,6 +21,8 @@ int main()
   int c, nl, nw, nc, state; 
   state = OUT; 
   nl = nw = nc = 0;
+  
+    printf("Enter Input : ");
 
     while ((c = getchar()) != EOF) { 
     	++nc; 

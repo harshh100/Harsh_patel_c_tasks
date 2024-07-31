@@ -9,46 +9,51 @@
 
 */
  
-/* Required Libraries */
-#include <stdio.h> 
-#define MAXLINE 1000 /* maximum input line length */ 
-#define MINSIZE 8 /* minimum character */
-/* int getline(char line[], int maxline); 
-void copy(char to[], char from[]); */
-/* print the longest input line */ 
-/* getline: read a line into s, return length */ 
-
-int get_line(char cStr[],int iLimit) /* getline function */
-{
-	 int iInput, iCounter; 
-	 for (iCounter=0; iCounter < iLimit-1 && (iInput=getchar())!=EOF && iInput!='\n'; ++iCounter) /* tack input untill '\n' or EOF */
-	 	cStr[iCounter] = iInput; 
-	 if (iInput == '\n') /* store '\n' at the end of string */
-	 { 
-		 cStr[iCounter] = iInput; 
-		 ++iCounter; 
-	 } 
-	 cStr[iCounter] = '\0'; /* store '\0' at the end of string */
-	 return iCounter; 
-}
+/*required header files*/
+/*stdio for input output function*/
+#include <stdio.h>
+#define highest_length 1000 /*highest length of array size*/
+/*MAIN function*/
  
-int main() 
-{ 
-	 int iLen; /* current line length */  
-	 char cLine[MAXLINE]; /* current input line */ 
+ 
+int main(){ /*main function start*/
+ 
+	char cArray[highest_length];      /* Input array */
+	int iStartArray[highest_length];  /* array of starting index of line which have length>8  */
+	int iEnd=0;				    /* end pointer of line */
+	int iStart=0;				    /* start pointer of line */
+	int iCounter=0;			    /* counter */
+	char cInput;				    /* Input character */
+
+	while((cInput=getchar())!=EOF){   
+	 
+		if(cInput=='\n'){			/* when new line comes */
+			if(iEnd-iStart > 8)		/* check if line length is greater than mininum length */
+			{
+			    iStartArray[iCounter++]=iStart;	/* store first index of line */
+			}
+			iStart=iEnd+1;			/* update start pointer to next line */
+		} 
+		cArray[iEnd++]=cInput;		/* input storing */
+	}
+	cArray[iEnd]='\n';				/* append '\n' at the end of array */
+	if(iEnd-iStart > 8)				/* for last line of input */
+	{
+	    iStartArray[iCounter++]=iStart;
+	}
+	printf("\n");
+	printf("Line longer than 8 characters:\n");
 	
-	printf("Enter Input : ");
-	 while ((iLen = get_line(cLine, MAXLINE)) > 0) 
-	 {
-		 if (iLen > MINSIZE) /* compare size of current line with minimun character */
-		 { 
-			printf("Line longer than %d characters: %s",MINSIZE,cLine);
-		 } 
-	} 
-	 return 0; 
+	for(int iIndex=0;iIndex<iCounter;iIndex++){
+		int iFlag=iStartArray[iIndex];
+		while(cArray[iFlag]!='\n'){			/* print starting index to '\n' for each starting index of line*/
+			printf("%c",cArray[iFlag]);
+			iFlag++;
+		}
+	printf("\n"); /*For better output view*/
+	}
+return 0;
 }
-
-
 
 
 
