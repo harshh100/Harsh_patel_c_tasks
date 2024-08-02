@@ -13,7 +13,7 @@ Should n be a variable or a symbolic parameter?
  
 /** required header files */
 #include <stdio.h>
-#define TAB_WIDTH 4   /* Define the number of spaces per tab stop */
+#define TAB_WIDTH 8   /* Define the number of spaces per tab stop */
 #define INPUT_SIZE 100 /* max size of input */
 
 /** main function */
@@ -25,13 +25,14 @@ int main() {
   do{
   		
      char cInput[INPUT_SIZE]; 	    /* input array */
-     printf("Enter String : ");
+     printf("Enter String : \n");
   	fgets(cInput,INPUT_SIZE,stdin);
   	  
 	
 	for(int iCounter=0;cInput[iCounter]!='\n';iCounter++){
 	
 	   if (cInput[iCounter] == '\t') {		/* replace tab with space */
+            
             while (iSpaces > 0) {
                 putchar(' ');
                 iSpaces--;
@@ -46,6 +47,11 @@ int main() {
         	  iCounter--;
         }else {
             putchar(cInput[iCounter]);		/* print character */
+            if(iSpaces>=0){
+            	iSpaces--;
+            }else{
+            	iSpaces=TAB_WIDTH;
+            }
             
         }
 	
