@@ -37,7 +37,7 @@ int main() {
                 putchar(' ');
                 iSpaces--;
             }
-            iSpaces=TAB_WIDTH;
+            iSpaces=TAB_WIDTH;			/* initially assign tab width to space */
         }else if(cInput[iCounter] == ' '){	/* skip multiple spaces */
         	  putchar(cInput[iCounter]);
         	  
@@ -48,9 +48,9 @@ int main() {
         }else {
             putchar(cInput[iCounter]);		/* print character */
             if(iSpaces>=0){
-            	iSpaces--;
+            	iSpaces--;				/* decrement space for mainten tab width */
             }else{
-            	iSpaces=TAB_WIDTH;
+            	iSpaces=TAB_WIDTH;			/* reset space if word bigger than tab width */
             }
             
         }
