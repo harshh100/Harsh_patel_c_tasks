@@ -32,24 +32,23 @@ int main(void)
                     ++iCounter;
             } else if (cInput[iCounter] == '/' && cInput[iCounter+1] == '*') { /* for multiline line comment */	
                 iCounter += 2;
-                while (cInput[iCounter] != '\0' && cInput[iCounter+1] != '\0' && (cInput[iCounter] != '*' || cInput[iCounter+1] != '/')) 	/* skip all multiline */
-                    ++iCounter;
-                if (cInput[iCounter] != '\0' && cInput[iCounter+1] == '\0')
+                while (cInput[iCounter] != '\0' && (cInput[iCounter] != '*' || cInput[iCounter+1] != '/')) 	/* skip all multiline */
                     ++iCounter;
                 if (cInput[iCounter] == '*')  /* check for end of comment line */
                     iCounter += 2;
             } else if (cInput[iCounter] == '\"') {  /* for "" */
+            	
                 putchar('\"');
                 ++iCounter;
-                while (cInput[iCounter] != '\0' && (cInput[iCounter-1] == '\\' || cInput[iCounter] != '\"'))
+                while (cInput[iCounter] != '\0' && cInput[iCounter] != '\"')
                     putchar(cInput[iCounter++]);
+                putchar(cInput[iCounter++]);
             } else {
                 putchar(cInput[iCounter++]);
             }
         }
     return 0;
 }
-
 /**
  * Test text
 
