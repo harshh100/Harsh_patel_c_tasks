@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #define INPUT_SIZE 50
 
 int any(char cInput[],char cRemove[]);
@@ -33,7 +34,13 @@ int main()
 	printf("Enter Remove characters : ");
 	fgets(cRemove,INPUT_SIZE,stdin);
 	
-	printf("Matched Location : %d ,Matched Character : %c",any(cInput,cRemove),cInput[any(cInput,cRemove)]);
+	if(any(cInput,cRemove)!= -1){
+		printf("Matched Location : %d ,Matched Character : %c",any(cInput,cRemove),cInput[any(cInput,cRemove)]);
+	
+	}else{
+		printf("No duplicate characters found.");
+	}
+	
 	
 	printf("\n");
 	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
@@ -51,11 +58,11 @@ int any(char cInput[],char cRemove[]){
 	int iInputLength = strlen(cInput);	/* Input array length */
 	int iRemoveLength = strlen(cRemove);	/* Remove array length */
 	
-	for(int iInputCounter=0;iInputCounter<iInputLength;iInputCounter++){
+	for(int iInputCounter=0;iInputCounter<iInputLength-1;iInputCounter++){
 	
-		for(int iRemoveCounter=0;iRemoveCounter<iRemoveLength;iRemoveCounter++){
+		for(int iRemoveCounter=0;iRemoveCounter<iRemoveLength-1;iRemoveCounter++){
 			
-			if(cInput[iInputCounter]==cRemove[iRemoveCounter]){	/* if input character matched then return index */
+			if(tolower(cInput[iInputCounter])==tolower(cRemove[iRemoveCounter])){	/* if input character matched then return index */
 				return iInputCounter;
 			}
 		

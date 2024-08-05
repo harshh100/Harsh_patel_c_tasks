@@ -12,6 +12,7 @@
 /** required header files */
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdbool.h>
 #define INPUT_SIZE 50
 
@@ -53,11 +54,11 @@ void squeeze(char cInput[],char cRemove[]){
 	int iInputLength = strlen(cInput);	/* Input array length */
 	int iRemoveLength = strlen(cRemove);	/* Remove array length */
 	
-	for(int iInputCounter=0;iInputCounter<iInputLength;iInputCounter++){
+	for(int iInputCounter=0;iInputCounter<iInputLength-1;iInputCounter++){
 		bool iPresent = 0;	/* flag that idicate weather input array's character is in the remove array or not */
-		for(int iRemoveCounter=0;iRemoveCounter<iRemoveLength;iRemoveCounter++){
+		for(int iRemoveCounter=0;iRemoveCounter<iRemoveLength-1;iRemoveCounter++){
 			
-			if(cInput[iInputCounter]==cRemove[iRemoveCounter]){	/* if input character present in remove string */
+			if(tolower(cInput[iInputCounter])==tolower(cRemove[iRemoveCounter])){	/* if input character present in remove string */
 				iPresent=1;
 				break;
 			}
