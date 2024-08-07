@@ -14,10 +14,107 @@ position p set to the rightmost n bits of y, leaving the other bits unchanged.
 #include <stdio.h>
 #define INPUT_SIZE 50
 
-int setbits(int iX,int iP,int iN,int iY);
+int setbits(int iX,int iP,int iN,int iY);	
 
+/** main function */
+int main()
+{
+  int iRunAgain=0;      	    /* for code run again or not */
+  
+
+ do{
+	int iX;	    /* value of x */
+	int iY;	    /* value of y */
+	int iP;	    /* value of position */
+	int iN;	    /* value of xnumber of bits */
+	
+	/* Input */
+	printf("Enter X : ");
+	scanf("%d",&iX);
+	
+	printf("Enter Y : ");
+	scanf("%d",&iY);	
+	
+	printf("Enter P : ");
+	scanf("%d",&iP);	
+	
+	printf("Enter N : ");
+	scanf("%d",&iN);
+	
+	if(iX<0 || iY<0){
+		printf("Enter positive value \n");
+	}else if(iP-iN<0){
+		printf("Insufficient bits. N should be >= P + 1 \n");
+	}else{
+	
+	/* printf("X : ");
+	printBinary(iX);
+	printf("\n");
+	printf("Y : ");
+	printBinary(iY);
+	printf("\n"); */
+		
+	/* function call */
+	printf("New X : %d",setbits(iX,iP,iN,iY));	
+	}
+	printf("\n");
+	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
+	scanf("%d",&iRunAgain);
+	getchar();
+  
+  }while(iRunAgain);
+
+  return 0;
+}
+
+
+int setbits(int iX,int iP,int iN,int iY){	/* function deffination */
+
+	int iMask = (1 << iN) - 1;         /* mask for iN bit extracting from iY */
+	/* printf("iMask { (1 << iN) - 1 } : ");
+	printBinary(iMask);
+	printf("\n"); */
+	
+	int iNbitofy = iY & iMask;		/* Extracted iN bit from iY */
+	/* printf("iNbitofy { iY & iMask } : ");
+	printBinary(iNbitofy);
+	printf("\n"); */
+	
+	iNbitofy = iNbitofy << (iP-1);	/* add extra padding to match with iY's position iP*/
+	/* printf("iNbitofy { iNbitofy << (iP-1) } : ");
+	printBinary(iNbitofy);
+	printf("\n"); */
+	
+	int iMaskOfX = ~(iMask<<(iP-1));	/* Mask for set off iN bits from iX which start from iP postion */
+	/* printf("iMaskOfX { ~(iMask<<(iP-1)) } : ");
+	printBinary(iMaskOfX);
+	printf("\n"); */
+		
+	iX = iX & iMaskOfX;				/* set off iN bits using mask */
+	
+	/* printf("iX { iX & iMaskOfX } : ");
+	printBinary(iX);
+	printf("\n"); */
+	
+	iX = iX | iNbitofy;				/* add iN bits of iY in iX */
+	/* printf("iX { iX | iNbitofy } : ");
+	printBinary(iX);
+	printf("\n"); */
+	printf("--------------\n");
+	
+	
+	return iX;
+
+}
+
+
+
+
+
+
+/*
 void printBinary(int n) {
-   unsigned int mask = 1 << (sizeof(int) * 8 - 1); // Create a mask with the highest bit set
+   unsigned int mask = 1 << (sizeof(int) * 8 - 1); // Create a mask with the highest bit set 
     int started = 0; // Flag to skip leading zeros
 
     if (n < 0) {
@@ -36,102 +133,10 @@ void printBinary(int n) {
     }
 
     if (!started) {
-        printf("0"); // If the number is zero
+        printf("0"); // If the number is zero 
     }
 
     printf("\n");
-}
-
-/** main function */
-int main()
-{
-  int iRunAgain=0;      	    /* for code run again or not */
-  
-
- do{
-	int iX;	    /* value of x */
-	int iY;	    /* value of x */
-	int iP;	    /* value of x */
-	int iN;	    /* value of x */
-	
-	printf("Enter X : ");
-	scanf("%d",&iX);
-	
-	printf("Enter Y : ");
-	scanf("%d",&iY);	
-	
-	printf("Enter P : ");
-	scanf("%d",&iP);	
-	
-	printf("Enter N : ");
-	scanf("%d",&iN);
-	
-	
-	printf("X : ");
-	printBinary(iX);
-	printf("\n");
-	printf("Y : ");
-	printBinary(iY);
-	printf("\n");
-	printf("P : ");
-	printBinary(iP);
-	printf("\n");
-	printf("N : ");
-	printBinary(iN);
-	printf("\n");
-		
-	
-	printf("New X : %d",setbits(iX,iP,iN,iY));	
-	
-	printf("\n");
-	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
-	scanf("%d",&iRunAgain);
-	getchar();
-  
-  }while(iRunAgain);
-
-  return 0;
-}
-
-
-int setbits(int iX,int iP,int iN,int iY){
-
-	int iMask = (1 << iN) - 1;
-	printf("iMask { (1 << iN) - 1 } : ");
-	printBinary(iMask);
-	printf("\n");
-	
-	int iNbitofy = iY & iMask;
-	printf("iNbitofy { iY & iMask } : ");
-	printBinary(iNbitofy);
-	printf("\n");
-	
-	iNbitofy = iNbitofy << (iP-1);
-	printf("iNbitofy { iNbitofy << (iP-1) } : ");
-	printBinary(iNbitofy);
-	printf("\n");
-	
-	int iMaskOfX = ~(iMask<<(iP-1));
-	printf("iMaskOfX { ~(iMask<<(iP-1)) } : ");
-	printBinary(iMaskOfX);
-	printf("\n");
-		
-	iX = iX & iMaskOfX;
-	
-	printf("iX { iX & iMaskOfX } : ");
-	printBinary(iX);
-	printf("\n");
-	
-	iX = iX | iNbitofy;
-	printf("iX { iX | iNbitofy } : ");
-	printBinary(iX);
-	printf("\n");
-	printf("--------------\n");
-	
-	
-	return iX;
-
-}
-
+}*/
 
 
