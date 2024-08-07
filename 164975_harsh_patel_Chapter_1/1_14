@@ -1,0 +1,61 @@
+int max(int x, int y){
+    if(x > y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+	while((iInput = getchar()) != EOF){ 	/* input loop */
+		if(iInput>-1){
+			iCharaterFrequencies[iInput]++;
+			imy_max = max(imy_max,iCharaterFrequencies[iInput]);
+		}
+	}
+
+
+
+int iX = 128;
+int iY = imy_max;
+
+
+puts("\n===== VERTICAL HISTOGRAM =====\n");
+
+  for (int iFreqCounter = iY; iFreqCounter > 0; iFreqCounter--) {
+      
+    printf("%2d |", iFreqCounter);
+    
+    for(int iCharCounter = 1; iCharCounter <=iX ; iCharCounter++) {
+            
+        if(iCharaterFrequencies[iCharCounter]>0){
+            
+          if (iCharaterFrequencies[iCharCounter] < iFreqCounter)
+            printf("     ");
+          else
+            printf("*    ");
+        }
+    }
+    putchar('\n');
+        
+  }
+  
+  printf("   ---");
+  for (int iCharCounter = 0; iCharCounter < iX; iCharCounter++){
+      if(iCharaterFrequencies[iCharCounter]>0)
+        printf("-----");
+  }
+    
+  putchar('\n');
+   
+  for (int iCharCounter = 0; iCharCounter <= iX; iCharCounter++){
+    if(iCharaterFrequencies[iCharCounter]>0)
+        if(iCharCounter==9)		
+			printf("   \\t");				/* \t print */
+		else if(iCharCounter==10)
+			printf("   \\n");				/* \n print */
+		else if(iCharCounter==32)
+			printf("   \\s");				/* \s print */
+		else
+			printf("%5c", iCharCounter); 			/* other character print */
+  }
+  putchar('\n');
