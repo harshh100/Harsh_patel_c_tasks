@@ -12,9 +12,8 @@ in x. Explain why. Use this observation to write a faster version of bitcount.
  
 /** required header files */
 #include <stdio.h>
-#define INT_BITS 32
 
-int bitcount(unsigned iX);
+char lower(char c);
 /** main function */
 int main()
 {
@@ -22,18 +21,13 @@ int main()
   
 
  do{
-	unsigned int iX;	    /* value of x input*/
+	char iInput;	    /* value of x input*/
 	
 	printf("Enter Input : ");
-	scanf("%d",&iX);
+	scanf("%c",&iInput);
+
+  	putchar(lower(iInput));
 	
-	/* input validation */
-	if(iX<0){
-		printf("Enter positive value \n");
-	}else{
-		
-		printf("Number Of 1's : %d",bitcount(iX));	
-	}
 	printf("\n");
 	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
 	scanf("%d",&iRunAgain);
@@ -45,12 +39,9 @@ int main()
 }
 
 
-int bitcount(unsigned int iX) 
-{ 
-	int iCounter=0; 
-	for(iCounter=0; iX!=0; iX &= iX-1)
-    		++iCounter;
-	return iCounter; 
+char lower(char iInput)
+{
+  return (iInput >= 'A' && iInput <= 'Z') ? iInput += 'a' - 'A' : iInput;
 }
 
 

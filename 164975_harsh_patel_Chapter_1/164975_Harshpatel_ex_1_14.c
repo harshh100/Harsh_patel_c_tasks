@@ -64,45 +64,87 @@ in its input.
   return 0;
 }*/
 
+
+/*
+* max: return max value
+* Author: Harsh Patel (164975)
+* Created: 23/7/24
+* Modified: 23/7/24
+*/
+
+int max(int x, int y){
+    if(x > y){
+        return x;
+    }else{
+        return y;
+    }
+}
+
 /** main function version 2.0 */
 int main()
 {
 	
 	int iInput;  						/* input*/
-	int iCharaterFrequencies[128] = {0};	/* character frequencies store*/
+	int iCharaterFrequencies[127] = {0};	/* character frequencies store*/
+	int imy_max='\0';
 	
 	printf("Enter String : ");
 	
 	while((iInput = getchar()) != EOF){ 	/* input loop */
 		if(iInput>-1){
-			iCharaterFrequencies[iInput]++;
+			iCharaterFrequencies[iInput]++;	/* frequency count */
+			imy_max = max(imy_max,iCharaterFrequencies[iInput]);   /* find maximum frequency */
 		}
 	}
 	
-	int iCharLength = sizeof(iCharaterFrequencies) / sizeof(iCharaterFrequencies[0]); /* length of charater array */
+	int iX = 127;		/* value of x-axis for plotting graph */
+	int iY = imy_max;   /* value of y-axis for plotting graph */
+
+
+puts("\n===== VERTICAL HISTOGRAM =====\n");
+
 	
-	printf("\n");
-	
-	for(int iI=0;iI< iCharLength ;iI++){		/* print character's histogram */
-		
-		if(iCharaterFrequencies[iI]>0){
-		
-		if(iI==9)		
-			printf("\\t: ");				/* \t print */
-		else if(iI==10)
-			printf("\\n: ");				/* \n print */
-		else if(iI==32)
-			printf("\\s: ");				/* \s print */
+  for (int iFreqCounter = iY; iFreqCounter > 0; iFreqCounter--) {	/* traverse lower frequency count to higher  */
+      
+    printf("%d |\t", iFreqCounter);		/* Printing '|' */
+    
+    for(int iCharCounter = 1; iCharCounter < iX ; iCharCounter++) {  /* traverse for each character */
+            
+        if(iCharaterFrequencies[iCharCounter]>0){			/* printing '*' or ' ' */
+            
+          if (iCharaterFrequencies[iCharCounter] < iFreqCounter)
+            printf("\t");
+          else
+            printf("*\t");
+        }
+    }
+    putchar('\n');
+        
+  }
+  
+  
+  /* Printing '-----' */		
+  printf("   ");
+  for (int iCharCounter = 0; iCharCounter < iX; iCharCounter++){
+      if(iCharaterFrequencies[iCharCounter]>0)
+        printf("--------");
+  }
+    
+  putchar('\n');
+  
+  /* Printing characters */ 
+  for (int iCharCounter = 0; iCharCounter < iX; iCharCounter++){
+    if(iCharaterFrequencies[iCharCounter]>0)
+        if(iCharCounter==9)		
+			printf("\t\\t");				/* \t print */
+		else if(iCharCounter==10)
+			printf("\t\\n");				/* \n print */
+		else if(iCharCounter==32)
+			printf("\t\\s");				/* \s print */
 		else
-			printf("%c : ",(iI)); 			/* other character print */
-			
-		while(iCharaterFrequencies[iI]>0 ){	/* character's histogram print */
-			putchar('*');
-			iCharaterFrequencies[iI]--;
-		}
-		putchar('\n');
-		}
-	}
+			printf("\t%c", iCharCounter); 			/* other character print */
+  }
+  putchar('\n');
 	
   return 0;
 }
