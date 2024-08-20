@@ -22,8 +22,8 @@ int main()
   int iRunAgain=0;      	    /* for code run again or not */
   
  do{
-	char cInput[INPUT_SIZE]; 	    /* input array */
-	char cOutput[INPUT_SIZE]; 	    /* Output array */
+	char cInput[INPUT_SIZE]={0}; 	    /* input array */
+	char cOutput[INPUT_SIZE]={0}; 	    /* Output array */
 	
 	printf("Enter Input : ");
 	fgets(cInput,INPUT_SIZE,stdin);
@@ -63,14 +63,12 @@ void expand(char cInput[],char cOutput[]){
 	while(cInput[iInputIndex]!='\n'){
 	
 		int iStart = cInput[iInputIndex++];
-		int iEnd;
 		
-		if(cInput[iInputIndex]!='-'){	
-			iEnd = cInput[iInputIndex];
-		}else{
-		    iEnd = cInput[++iInputIndex];
-		}
-				
+		while(((cInput[iInputIndex]=='-' && cInput[iInputIndex+1]!='-') || (cInput[iInputIndex]!='-' && cInput[iInputIndex+1]=='-')) && cInput[iInputIndex+1]!='\n')
+			iInputIndex++;
+			
+		int iEnd = cInput[iInputIndex++];
+	
 		while(iStart<=iEnd){
 			cOutput[iOutputIndex]=iStart;
 			iOutputIndex++;
