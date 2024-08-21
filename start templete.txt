@@ -5,6 +5,8 @@
 
 *Created:17/7/24
 
+*Modified : 20/8/24
+
 */
  
 /** required header files */
@@ -13,5 +15,18 @@
 /** main function */
 int main()
 {
+  int iRunAgain=0;      	    /* for code run again or not */
+  
+ do{
+	
+	// body of main
+	
+	printf("\n");
+	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
+	scanf("%d",&iRunAgain);
+	getchar();
+  
+  }while(iRunAgain);
+
   return 0;
 }

@@ -57,19 +57,19 @@ void expand(char cInput[],char cOutput[]){
 	int iOutputIndex = 0;
 	
 	while((cInput[iInputIndex]<48 || (cInput[iInputIndex]>=58 && cInput[iInputIndex]<=64) || (cInput[iInputIndex]>=91 && cInput[iInputIndex]<=96) || cInput[iInputIndex]>122) && cInput[iInputIndex]!='\n')
-		iInputIndex++;
+		iInputIndex++;				/* skip leading '-' */
 	
 	
 	while(cInput[iInputIndex]!='\n'){
 	
-		int iStart = cInput[iInputIndex++];
+		int iStart = cInput[iInputIndex++];   /* for start */
 		
 		while(((cInput[iInputIndex]=='-' && cInput[iInputIndex+1]!='-') || (cInput[iInputIndex]!='-' && cInput[iInputIndex+1]=='-')) && cInput[iInputIndex+1]!='\n')
-			iInputIndex++;
+			iInputIndex++;					/* for end */
 			
 		int iEnd = cInput[iInputIndex++];
 	
-		while(iStart<=iEnd){
+		while(iStart<=iEnd){				/* store from start to end */
 			cOutput[iOutputIndex]=iStart;
 			iOutputIndex++;
 			iStart++;
