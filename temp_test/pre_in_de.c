@@ -32,7 +32,7 @@ int main() {
     x=5;
     printf("\n5->---------------\n");
     printf("\n    x   : %d\n",x);                   //5
-    printf("    x++ : %d, x-- : %d\n", x++, x--);    //5 5
+    printf("    x++ : %d, x-- : %d\n", x++, x--);    //5 6
     printf("    x   : %d\n",x);                      //5
 
     
