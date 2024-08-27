@@ -1,5 +1,6 @@
 /**
-* Adding the Modulus operator and provision for negative numbers Program is given the input in a single and and it print the output upon getting a \n character. For e.g: 10 10 + 100 + 2 * 240
+* Add the commands to print the top elements of the stack without popping, to 
+duplicate it, and to swap the top two elements. Add a command to clear the stack.
  
 *Author : Harsh Patel (164975)
 

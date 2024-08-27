@@ -1,5 +1,6 @@
 /**
-* Adding the Modulus operator and provision for negative numbers Program is given the input in a single and and it print the output upon getting a \n character. For e.g: 10 10 + 100 + 2 * 240
+*  Given the basic framework, it's straightforward to extend the calculator. Add 
+the modulus (%) operator and provisions for negative numbers.
  
 *Author : Harsh Patel (164975)
 

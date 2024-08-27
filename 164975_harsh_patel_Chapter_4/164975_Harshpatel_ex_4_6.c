@@ -1,5 +1,5 @@
 /**
-*  Add access to library functions like sin, exp, and pow. 
+* Add commands for handling variables. (It's easy to provide twenty-six variables with single-letter names.) Add a variable for the most recently printed value. 
  
 *Author : Harsh Patel (164975)
 
@@ -49,8 +49,10 @@ void mathfnc(char s[]);
 
 int main(void) {
     int type;
+    int iPastVar=0;
     char s[MAXOP];
 	double op2,op1;
+	double dVariable[26];
 	printf("Enter operands and a operator (in postfix manner): ");
     while ((type = getop(s)) != EOF) {
 
@@ -61,6 +63,14 @@ int main(void) {
             case NAME:
                 mathfnc(s);
                 break;
+            case '=':
+            	 pop();
+		      if (iPastVar >= 'A' && iPastVar <= 'Z')
+		           dVariable[iPastVar - 'A'] = pop();
+		      else
+		           printf("error: novariablename\n");
+            	 break;
+
             case '+':
                 push(pop() + pop());
                 break;
@@ -131,9 +141,14 @@ int main(void) {
                 printf("Enter operands and a operator (in postfix manner): ");
                 break;
             default:
-                printf("error: unknown command %s\n", s);
-                break;
+                if (type >= 'A' && type <= 'Z')
+                	push(dVariable[type - 'A']);
+            	 else
+              		  printf("error: unknown command %s\n", s);
+            	 break;
+        
         }
+    iPastVar = type;
     }
     return 0;
 }
