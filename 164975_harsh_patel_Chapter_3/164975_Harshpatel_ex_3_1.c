@@ -33,7 +33,7 @@ int main()
 	printf("Enter Num : ");
 	scanf("%d",&iFindNum);
 	
-	(binsearch(iFindNum, iInput, sizeof(iInput)/sizeof(iInput[0]))!=-1) ? printf("%d is Present in Array",iFindNum) : printf("%d is Not Present Array",iFindNum);
+	(binsearch(iFindNum, iInput, sizeof(iInput)/sizeof(iInput[0]))!=-1) ? printf("%d is Present in Array",iFindNum) : printf("%d is Not in Present Array",iFindNum);
 	
 	printf("\n");
 	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/
