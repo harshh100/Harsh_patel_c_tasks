@@ -28,13 +28,25 @@ int main()
 	int iN;	    /* value of number of bits */
 	
 	printf("Enter X : ");
-	scanf("%d",&iX);
+	if (scanf("%d",&iX)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 		
 	printf("Enter P : ");
-	scanf("%d",&iP);	
+	if (scanf("%d",&iP)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }	
 	
 	printf("Enter N : ");
-	scanf("%d",&iN);
+	if (scanf("%d",&iN)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 	
 	/* input validation */
 	if(iX<0){

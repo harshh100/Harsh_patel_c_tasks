@@ -14,6 +14,7 @@
 #define MAXLINE 1000	/* maximum input line length */
 #include <ctype.h>
 #include <math.h>
+#include<string.h>
 
 
 double atof(char s[]);
@@ -28,7 +29,39 @@ int main()
 	printf("Enter Input : ");
 	fgets(cInputString,MAXLINE,stdin);	
 	
+	int iErrorCounter=0;
+	int iErrorflag=0;
+	while(cInputString[iErrorCounter]!='e'){
+		if(!((cInputString[iErrorCounter]>=48 && cInputString[iErrorCounter]<=58) || cInputString[iErrorCounter]=='-' || cInputString[iErrorCounter]=='.')){
+		printf("Invalid Input");
+		fflush(stdin);
+		iErrorflag=1;
+		break;
+		}
+		iErrorCounter++;
+	}
+	iErrorCounter++;
+	if(cInputString[iErrorCounter]!='+' && cInputString[iErrorCounter]!='-'){
+		printf("Invalid Input");
+		fflush(stdin);
+		iErrorflag=1;
+		continue;
+	}
+	iErrorCounter++;
+	
+	while(cInputString[iErrorCounter]!='\n'){
+		if(!(cInputString[iErrorCounter]>=48 && cInputString[iErrorCounter]<=58)){
+		printf("Invalid Input");
+		fflush(stdin);
+		iErrorflag=1;
+		break;
+		}
+		iErrorCounter++;
+	}
+	
+	if(!iErrorflag){
 	printf("Output : %f",atof(cInputString));
+	}
 	
 	printf("\n");
 	printf("Do you want to Run Again [1 for YES / 0 for NO] : "); /* Ask for code run again*/

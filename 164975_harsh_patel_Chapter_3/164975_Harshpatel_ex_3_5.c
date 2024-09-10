@@ -30,9 +30,17 @@ int main()
  	char cOutput[MAX_SIZE];	/* Output  */
 	
 	printf("Enter Number  : ");	
-	scanf("%d",&iInput);
+	if (scanf("%d",&iInput)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 	printf("Enter Base  : ");	
-	scanf("%d",&iBase);
+	if (scanf("%d",&iBase)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 	
 	if(iBase<=0){
 		printf("\nERROR : Enter valid Base");

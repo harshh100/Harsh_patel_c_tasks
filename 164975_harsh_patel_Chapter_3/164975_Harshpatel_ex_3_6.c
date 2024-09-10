@@ -30,9 +30,17 @@ int main()
  	int iMinFieldWidth;
 	
 	printf("Enter Number  : ");	
-	scanf("%d",&iInput);
+	if (scanf("%d",&iInput)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);            
+            continue;
+     }
 	printf("Enter Min Field width  : ");	
-	scanf("%d",&iMinFieldWidth);
+	if (scanf("%d",&iMinFieldWidth)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 	
 	itoa(iInput,cOutput,iMinFieldWidth);	/* Function call of itoa */
 	

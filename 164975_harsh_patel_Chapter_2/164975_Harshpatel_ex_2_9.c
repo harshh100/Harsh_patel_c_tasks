@@ -25,7 +25,11 @@ int main()
 	unsigned int iX;	    /* value of x input*/
 	
 	printf("Enter Input : ");
-	scanf("%d",&iX);
+	if (scanf("%d",&iX)!= 1) {
+            printf("Invalid input. Please enter an integer value.\n");
+            fflush(stdin);
+            continue;
+     }
 	
 	/* input validation */
 	if(iX<0){
