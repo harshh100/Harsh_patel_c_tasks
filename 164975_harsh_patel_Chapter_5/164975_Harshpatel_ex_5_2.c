@@ -1,6 +1,6 @@
 /*
-*As written, getint treats a + or - not followed by a digit as a valid 
-representation of zero. Fix it to push such a character back on the input. 
+*Write getfloat, the floating-point analog of getint. What type does 
+getfloat return as its function value? 
 
 *Author : Harsh Patel (164975)
 
@@ -89,7 +89,7 @@ int getint(int *pn) {
 }
 
 int main(void) {
-    int iInputCounter, iOutput[SIZE];
+    int iInputCounter, iOutput[SIZE], getint(int *);
     
     	   printf("Enter string : ");
     for (iInputCounter = 0; iInputCounter < SIZE && getint(&iOutput[iInputCounter]) != EOF;iInputCounter++) {
