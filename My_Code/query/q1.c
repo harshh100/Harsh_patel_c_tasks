@@ -23,5 +23,5 @@ int main()
 	
 	int t =m_swap(x,y);
 	printf("x= %d y = %d\n",x,y);
-	printf("\nt: %d",t);
+	printf("t: %d\n",t);
 }

@@ -13,7 +13,8 @@ int main() {
     str[length] = '\0';  // Null-terminate the string
 
     printf("\n");
-
+    
+    
     // Loop through each character in the string
     for (int i = 0; i < length; i++) {
         int count = 0;
@@ -28,6 +29,7 @@ int main() {
         if (already_counted) {
             continue;
         }
+        
         // Count the occurrences of str[i]
         for (int j = 0; j < length; j++) {
             if (str[j] == str[i]) {

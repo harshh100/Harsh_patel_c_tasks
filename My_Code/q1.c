@@ -19,9 +19,9 @@ int main()
 	int x=10,y=20; 
 	
 	my_swap(&x,&y);
-	printf("x= %d y = %d\n",x,y);
+	printf("x= %d y = %d",x,y);
 	
 	int t =m_swap(x,y);
-	printf("x= %d y = %d\n",x,y);
+	printf("\nx= %d y = %d",x,y);
 	printf("\nt: %d",t);
 }
