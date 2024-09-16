@@ -1,5 +1,5 @@
 /*
-* Modify getop so that it doesn't need to use ungetch
+*Modify getop so that it doesn't need to use ungetch
 
 *Author : Harsh Patel (164975)
 
