@@ -6,8 +6,8 @@
 struct Person{
 	char cName[MAX_INPUT];
 	char cHomeTown[MAX_INPUT];
-	int age;
-	int salary;
+	int iAge;
+	int iSalary;
 };
 
 int main(){
@@ -32,22 +32,34 @@ int main(){
 		printf("\nPerson %d\n",(iPrintCounter+1));
 		printf("Name : %s\n",Persons[iPrintCounter].cName);
 		printf("HomeTown : %s\n",Persons[iPrintCounter].cHomeTown);
+		printf("Age : %s\n",Persons[iPrintCounter].iAge);
+		printf("Salary : %s\n",Persons[iPrintCounter].iSalary);
+		
 		
 	}*/
 	
 	printf("\n=========================================================\n");
 	
+	
 	int iRunAgain=0;  
 	do{
 		
 	char cSearchName[MAX_INPUT];
-	printf("Enter the name of the person you want to search for : ");
+	printf("Enter the name of the person whose 'age' and 'salary' you want to add : ");
 	scanf("%s",cSearchName);
 	
 	for(int iSearchCounter=0;iSearchCounter<3;iSearchCounter++){
 		
 		if(!strcmp(cSearchName,Persons[iSearchCounter].cName)){
-			printf("'%s' Lives in '%s'\n",cSearchName,Persons[iSearchCounter].cHomeTown);
+			int iInputAge;
+			int iInputSalary;
+			printf("\nFor '%s' \n",Persons[iSearchCounter].cName);
+			printf("Enter Age : ");
+			scanf("%d",&iInputAge);
+			printf("Enter Salary : ");
+			scanf("%d",&iInputSalary);
+			Persons[iSearchCounter].iAge=iInputAge;
+			Persons[iSearchCounter].iSalary=iInputSalary;
 			break;
 		}
 	}
@@ -59,6 +71,32 @@ int main(){
 	fflush(stdin);
   
   }while(iRunAgain);
+  
+  	/*printf("\n\t\t\tOUTPUT\n");
+	for(int iPrintCounter=0;iPrintCounter<3;iPrintCounter++){
+		printf("\nPerson %d\n",(iPrintCounter+1));
+		printf("Name : %s\n",Persons[iPrintCounter].cName);
+		printf("HomeTown : %s\n",Persons[iPrintCounter].cHomeTown);
+		printf("Age : %d\n",Persons[iPrintCounter].iAge);
+		printf("Salary : %d\n",Persons[iPrintCounter].iSalary);
+		
+		
+	}*/
+	
+	FILE *fptr = fopen("OutPut.txt", "w"); 
+	
+     if (fptr == NULL) 
+     { 
+        printf("Could not open file"); 
+        return 0; 
+     } 
+     
+     
+     //fprintf(fptr,"%d.%s\n", i, str); 
+	for(int iSaveCounter=0;iSaveCounter<3;iSaveCounter++){
+		fprintf(fptr,"%d %s %s %d %d\n", (iSaveCounter+1), Persons[iSaveCounter].cName,Persons[iSaveCounter].cHomeTown,Persons[iSaveCounter].iAge,Persons[iSaveCounter].iSalary);
+	}
+	
 	
 	return 0;
 }
