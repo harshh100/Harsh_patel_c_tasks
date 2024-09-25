@@ -1,7 +1,10 @@
-#include <stdio.h>
-
-void main()
+#include<stdio.h> 
+int main()
 {
-   extern int i; i=20;
-   printf("%d",i);
+int i=_l_abc(10); 
+printf("%d\n",--i);
+}
+int _l_abc(int i)
+{
+return(i++);
 }

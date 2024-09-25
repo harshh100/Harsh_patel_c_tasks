@@ -47,8 +47,9 @@ void ungetch(int c) {
 }
 
 
-int getint(int *pn) {
+int getfloat(float *pn) {
     int c, sign;
+    float power;
 
     while (isspace(c = getch()));	/* skip white space */
 	
@@ -77,10 +78,18 @@ int getint(int *pn) {
         return 0;
     }
         
-    for (*pn = 0; isdigit(c); c = getch())
-        *pn = 10 * *pn + (c - '0');
+    for (*pn = 0.0; isdigit(c); c = getch())
+        *pn = 10.0 * *pn + (c - '0');
 
-    *pn *= sign;
+    if (c == '.')
+        c = getch();
+    
+    for (power = 1.0; isdigit(c); c = getch()) {
+        *pn = 10.0 * *pn + (c - '0');    /* fractional part */
+        power *= 10.0;
+    }
+    
+    *pn *= sign / power;
 
     if (c != EOF)
         ungetch(c);
@@ -89,16 +98,17 @@ int getint(int *pn) {
 }
 
 int main(void) {
-    int iInputCounter, iOutput[SIZE], getint(int *);
+    int iInputCounter;
+    float iOutput[SIZE];
     
     	   printf("Enter string : ");
-    for (iInputCounter = 0; iInputCounter < SIZE && getint(&iOutput[iInputCounter]) != EOF;iInputCounter++) {
+    for (iInputCounter = 0; iInputCounter < SIZE && getfloat(&iOutput[iInputCounter]) != EOF;iInputCounter++) {
         printf("Enter string : ");
     } 
  
-    printf("Output array : ");
-    for (int s = 0; s <= iInputCounter; s++)
-        printf("%d  ", iOutput[s]);
+    printf("\nOutput array : ");
+    for (int s = 0; s < iInputCounter; s++)
+        printf("%f  ", iOutput[s]);
 					
     return 0;
 }

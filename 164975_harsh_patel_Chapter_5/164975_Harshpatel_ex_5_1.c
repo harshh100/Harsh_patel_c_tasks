@@ -96,8 +96,8 @@ int main(void) {
         printf("Enter string : ");
     } 
  
-    printf("Output array : ");
-    for (int s = 0; s <= iInputCounter; s++)
+    printf("\nOutput array : ");
+    for (int s = 0; s < iInputCounter; s++)
         printf("%d  ", iOutput[s]);
 					
     return 0;
