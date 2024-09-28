@@ -1,41 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_NAME_LENGTH 100
-
-void searchByName(const char *searchName) {
+int main() {
     FILE *file = fopen("OutPut.txt", "r");
-    if (!file) {
-        perror("Failed to open file");
-        return;
+    if (file == NULL) {
+        printf("Error opening file");
+        return 0;
     }
-
+    printf("Enter The name Which you want to search:");
+    char searchName[50];
+    scanf("%s",searchName);		 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        Person person;
-        sscanf(line, "%*d %s %*s %d %f", person.name, &person.age, &person.salary);
-
-        if (strcmp(person.name, searchName) == 0) {
-            printf("name: %s\n", person.name);
-            printf("age: %d\n", person.age);
-            printf("salary: %.2f\n", person.salary);
-            fclose(file);
-            return;
+        int iIndex;
+        char cName[50], cHomeTown[50];
+        int iAge, iSalary;
+        sscanf(line, "%d %s %s %d %d", &iIndex, cName, cHomeTown, &iAge, &iSalary);
+        if (strcmp(cName, searchName) == 0) {
+        printf("name : %s\n", cName);
+        printf("town : %s\n", cHomeTown);
+        printf("age : %d\n", iAge);
+        printf("salary : %d\n\n", iSalary);
         }
     }
-    printf("Person not found.\n");
     fclose(file);
-}
-
-int main() {
-    char searchName[MAX_NAME_LENGTH];
-    printf("What’s the name of the person you want to search for? :  ");
-    fgets(searchName, MAX_NAME_LENGTH, stdin);
-    searchName[strcspn(searchName, "\n")] = 0; // Remove newline
-
-    searchByName(searchName);
-
     return 0;
 }
-
