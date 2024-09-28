@@ -1,0 +1,47 @@
+# gcc -fPIC -c hello.c here.c bye.c
+# gcc -shared -o libmylib.so hello.o here.o bye.o
+# gcc -o main main.c -L. -lmylib
+
+
+# Compiler
+CC = gcc
+LD = gcc
+
+# Compiler flags
+CFLAGS = -fPIC -Wall -g
+
+# Suffix rule for compiling C files to object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+# Macros for shared library linking
+DYNLINKFLAGS = -g -shared -Wl,-soname,$@.5
+PROG_OBJS = main.o
+RM = rm -rf
+PROG = myapp
+LIBS = -lc -L.
+LIB_FILES = libmylib.so
+LIB_MINOR = $(LIB_FILES).5.1
+LIB_RELEASE = $(LIB_MINOR).10
+LIB_OBJS = hello.o here.o bye.o  # Object files for the library
+
+# Target to build the shared library and the executable
+all: $(LIB_FILES) $(PROG)
+
+# Rule to create the shared library
+libmylib.so: $(LIB_OBJS)
+	$(LD) $(DYNLINKFLAGS) -o $(LIB_RELEASE) $^
+	ln -sf $(LIB_RELEASE) $(LIB_MINOR)
+	ln -sf $(LIB_MINOR) $@
+	ln -sf $@ $@.5
+
+# Rule to create the executable
+$(PROG): $(PROG_OBJS)
+	$(LD) $(PROG_OBJS) -o $(PROG) -L. -lmylib
+
+# Clean up the generated files
+clean:
+	$(RM) $(PROG_OBJS) $(PROG) $(LIB_OBJS) $(LIB_FILES) $(LIB_RELEASE) $(LIB_MINOR) libmylib.so.5
+
+.PHONY: all clean
+
