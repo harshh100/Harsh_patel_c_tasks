@@ -28,9 +28,9 @@ int main(void) {
     while (1) {
         printf("\n> ");
         if (fgets(instruction, sizeof(instruction), stdin) == NULL) {
-            break; // Handle EOF or input error
+            break; /* Handle EOF or input error */
         }
-        instruction[strcspn(instruction, "\n")] = 0; // Remove the newline character
+        instruction[strcspn(instruction, "\n")] = 0; /* Remove the newline character */
         pi = trim(instruction);
         
         if (*pi == 'q') break;

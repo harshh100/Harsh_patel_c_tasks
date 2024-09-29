@@ -1,3 +1,11 @@
+/*
+*task5
+
+*Author : Harsh Patel (164975)
+
+*Created:17/9/24
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,60 +15,72 @@
 #define MAX_LINE_LENGTH 256
 
 typedef struct {
-    char name[MAX_NAME_LENGTH];
-    char lastName[MAX_LAST_NAME_LENGTH];
-    int age;
-    float salary;
+    char cName[MAX_NAME_LENGTH];
+    char cLastName[MAX_LAST_NAME_LENGTH];
+    int iAge;
+    float iSalary;
 } Person;
 
+/* 
+* addLastNames : Function to input details of multiple persons with last names. 
+* Author : Harsh Patel (164975)
+*/
 void addLastNames() {
-    FILE *file = fopen("OutPut.txt", "r");
-    FILE *newFile = fopen("OutPut_with_lastnames.txt", "w");
-    if (!file || !newFile) {
+    FILE *pFile = fopen("OutPut.txt", "r");
+    FILE *pNewFile = fopen("OutPut_with_lastnames.txt", "w");
+    
+    if (!pFile || !pNewFile) {
         perror("Failed to open file");
         return;
     }
 
-    char line[MAX_LINE_LENGTH];
-    Person person;
-    int index = 0;
+    char line[MAX_LINE_LENGTH]; /* Buffer to read each line from the file */
+    Person person; /* Structure to hold person details */
+    int iIndex = 0; /* Counter for the number of persons */
 
-    // Read each line and prompt for last name
-    while (fgets(line, sizeof(line), file)) {
-        sscanf(line, "%*d %s %*s %d %f", person.name, &person.age, &person.salary);
+    /* Read each line and prompt for last cName */
+    while (fgets(line, sizeof(line), pFile)) {
+        sscanf(line, "%*d %s %*s %d %f", person.cName, &person.iAge, &person.iSalary);
         
-        printf("Enter last name for %s: ", person.name);
-        fgets(person.lastName, MAX_LAST_NAME_LENGTH, stdin);
-        person.lastName[strcspn(person.lastName, "\n")] = 0; // Remove newline
+        printf("Enter last cName for %s: ", person.cName);
+        fgets(person.cLastName, MAX_LAST_NAME_LENGTH, stdin);
+        person.cLastName[strcspn(person.cLastName, "\n")] = 0; /* Remove newline */
 
-        // Write to the new file
-        fprintf(newFile, "%d %s %s %d %.2f\n", index + 1, person.name, person.lastName, person.age, person.salary);
-        index++;
+        /* Write the updated person details to the new file */
+        fprintf(pNewFile, "%d %s %s %d %.2f\n", iIndex + 1, person.cName, person.cLastName, person.iAge, person.iSalary);
+        iIndex++;
     }
 
-    fclose(file);
-    fclose(newFile);
+    fclose(pFile);
+    fclose(pNewFile);
 }
 
+/* 
+* printUpdatedData : Function to print updated list of persons with last names. 
+* Author : Harsh Patel (164975)
+*/
 void printUpdatedData() {
-    FILE *file = fopen("OutPut_with_lastnames.txt", "r");
-    if (!file) {
+    FILE *pFile = fopen("OutPut_with_lastnames.txt", "r");
+    
+    if (!pFile) {
         perror("Failed to open file");
         return;
     }
 
-    char line[MAX_LINE_LENGTH];
+    char line[MAX_LINE_LENGTH]; /* Buffer to read each line from the updated file */
     printf("Updated List of People:\n");
-    while (fgets(line, sizeof(line), file)) {
+    
+    /* Print each line from the updated file */
+    while (fgets(line, sizeof(line), pFile)) {
         printf("%s", line);
     }
 
-    fclose(file);
+    fclose(pFile);
 }
 
 int main() {
-    addLastNames();
-    printUpdatedData();
+    addLastNames(); /* Input last names for persons */
+    printUpdatedData(); /* Print the updated list of persons */
     return 0;
 }
 

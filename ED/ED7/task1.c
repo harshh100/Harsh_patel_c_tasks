@@ -1,3 +1,11 @@
+/*
+*task1
+
+*Author : Harsh Patel (164975)
+
+*Created: 18/9/24
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,7 +29,7 @@ int main(int argc, char *args[]) {
     int iLine = 1;
     int iDifferenceCount = 0;
 
-    // Compare lines of both files
+    /* Compare lines of both files */
     while (fgets(cLineOf1, sizeof(cLineOf1), file1) && fgets(cLineOf2, sizeof(cLineOf2), file2)) {
         if (strcmp(cLineOf1, cLineOf2) != 0) {
             iDifferenceCount++;
@@ -31,7 +39,7 @@ int main(int argc, char *args[]) {
             printf("Line of %s: %s", args[2], cLineOf2);
             printf("-------------------------\n\n");
 
-            // Stop printing after 10 differences
+            /* Stop printing after 10 differences */
             if (iDifferenceCount >= 10) {
                 printf("Stopped printing after 10 differences.\n");
                 break;
@@ -40,7 +48,7 @@ int main(int argc, char *args[]) {
         iLine++;
     }
 
-    // Check for remaining lines in either file
+    /* Check for remaining lines in either file */
     while (fgets(cLineOf1, sizeof(cLineOf1), file1)) {
         iDifferenceCount++;
         printf("-------------------------\n");
@@ -63,6 +71,7 @@ int main(int argc, char *args[]) {
         printf("Line of %s: %s", args[2], cLineOf2);
         printf("-------------------------\n\n");
         iLine++;
+        
         if (iDifferenceCount >= 10) {
             printf("Stopped printing after 10 differences.\n");
             break;

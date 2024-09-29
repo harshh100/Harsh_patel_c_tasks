@@ -1,8 +1,18 @@
+/*
+*task1 
+
+*Author : Harsh Patel (164975)
+
+*Created:17/9/24
+
+*/
+
 #include<stdio.h>
 #include<string.h>
 
 #define MAX_INPUT 14
 
+/* Structure to hold information about a person */
 struct Person{
 	char cName[MAX_INPUT];
 	char cHomeTown[MAX_INPUT];
@@ -16,6 +26,7 @@ int main(){
 	
 	printf("\t\t\tINPUT");
 	
+	/* Input details of persons */
 	inputPersons(Persons,3);
 	
 	printf("\n=========================================================\n");
@@ -26,6 +37,8 @@ int main(){
 	char cSearchName[MAX_INPUT];
 	printf("Enter the name of the person you want to search for : ");
 	scanf("%s",cSearchName);
+	
+	/* Search for the person and display the result */
 	
 	searchPerson(Persons,cSearchName,3);
 	
@@ -39,6 +52,12 @@ int main(){
 	
 	return 0;
 }
+
+
+/* 
+* inputPersons : Function to input details of multiple persons.
+* Author : Harsh Patel (164975)
+*/
 
 void inputPersons(struct Person Persons[], int numPersons){
 	for(int iInputCounter=0;iInputCounter<numPersons;iInputCounter++){
@@ -55,6 +74,10 @@ void inputPersons(struct Person Persons[], int numPersons){
 	}
 }
 
+/* 
+* searchPerson : Function to search for a person by name and display their hometown.
+* Author : Harsh Patel (164975)
+*/
 
 void searchPerson(struct Person Persons[], char cSearchName[],int numPersons){
 	

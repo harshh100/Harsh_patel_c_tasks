@@ -1,13 +1,22 @@
+/*
+*task2 
+
+*Author : Harsh Patel (164975)
+
+*Created:17/9/24
+
+*/
 #include<stdio.h>
 #include<string.h>
 
 #define MAX_INPUT 14
 
+/* Structure to hold information about a person */
 struct Person{
-	char cName[MAX_INPUT];
-	char cHomeTown[MAX_INPUT];
-	int iAge;
-	int iSalary;
+	char cName[MAX_INPUT]; /* Name of the person */
+	char cHomeTown[MAX_INPUT]; /* Hometown of the person */
+	int iAge; /* Age of the person */
+	int iSalary;  /* Salary of the person */
 };
 
 void inputPersons(struct Person Persons[], int numPersons);
@@ -41,6 +50,7 @@ int main(){
 	printf("--> Enter the name of the person whose 'age' and 'salary' you want to add : ");
 	scanf("%s",cSearchName);
 	
+	/* Add age and salary for the specified person */
 	add_age_salary(Persons,cSearchName,3);
 	
 	printf("\n");
@@ -51,9 +61,15 @@ int main(){
   
   }while(iRunAgain);
   	
+  	/* Save the details to a file */
 	file_save(Persons);
 	return 0;
 }
+
+/* 
+ * inputPersons(function name) : Function to input details of multiple persons. 
+ * Author : Harsh Patel (164975)
+ */
 
 void inputPersons(struct Person Persons[], int numPersons){
 	for(int iInputCounter=0;iInputCounter<numPersons;iInputCounter++){
@@ -64,43 +80,60 @@ void inputPersons(struct Person Persons[], int numPersons){
 		scanf("%s",cInputName);
 		printf("Enter HomeTown : ");
 		scanf("%s",cInputHomeTown);
+		
+		/* Copy input data into the persons array */
 		strcpy(Persons[iInputCounter].cName,cInputName);
 		strcpy(Persons[iInputCounter].cHomeTown,cInputHomeTown);
 		//Persons[iInputCounter].cPHomeTown =cInputHomeTown;
 	}
 }
 
+
+/* 
+ * add_age_salary(function name) : Function to add age and salary for a specific person. 
+ * Author : Harsh Patel (164975)
+ */
 void add_age_salary(struct Person Persons[], char cSearchName[], int numPersons){
 	for(int iSearchCounter=0;iSearchCounter<numPersons;iSearchCounter++){
 		
 		if(!strcmp(cSearchName,Persons[iSearchCounter].cName)){
-			int iInputAge;
-			int iInputSalary;
+			int iInputAge; /* Variable to store the input age */
+			int iInputSalary;  /* Variable to store the input salary */
 			printf("\n--> For '%s' \n",Persons[iSearchCounter].cName);
 			printf("Enter Age : ");
 			scanf("%d",&iInputAge);
 			printf("Enter Salary : ");
 			scanf("%d",&iInputSalary);
+			
+			/* Assign age and salary to the respective person */
 			Persons[iSearchCounter].iAge=iInputAge;
 			Persons[iSearchCounter].iSalary=iInputSalary;
-			break;
+			break; /* Exit the loop after updating the person */
 		}
 	}
 }
 
+
+/* 
+ * file_save(function name) : Function to save the details of persons to a file. 
+ * Author : Harsh Patel (164975)
+ */
 void file_save(struct Person Persons[]){
 	FILE *fptr = fopen("OutPut.txt", "w"); 
 	
+	/* Check if the file was opened successfully */
      if (fptr == NULL) 
      { 
         printf("Could not open file"); 
         return; 
      } 
      
+     /* Write each person's details to the file */
 	for(int iSaveCounter=0;iSaveCounter<3;iSaveCounter++){
 		fprintf(fptr,"%d %s %s %d %d\n", (iSaveCounter+1), Persons[iSaveCounter].cName,Persons[iSaveCounter].cHomeTown,Persons[iSaveCounter].iAge,Persons[iSaveCounter].iSalary);
 	}
 	
+	/* Close the file */
 	fclose(fptr);
 }
 
