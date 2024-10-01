@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Iinclude
+CFLAGS=-Iinclude -Iunity
 
 UNITY_SRC=unity/unity.c
 
@@ -7,11 +7,13 @@ TEST_SRC=test/test_my_code.c
 
 SRC=src/my_code.c
 
-all: test
+.PHONY: all clean
 
-test: $(SRC) $(TEST_SRC) $(UNITY_SRC)
-	$(CC) -o test $(SRC) $(TEST_SRC) $(UNITY_SRC) $(CFLAGS)
+all: my_test_executable
+
+my_test_executable: $(SRC) $(TEST_SRC) $(UNITY_SRC)
+	$(CC) -o my_test_executable $(SRC) $(TEST_SRC) $(UNITY_SRC) $(CFLAGS)
 
 clean:
-	rm -f test
+	rm -f my_test_executable
 
